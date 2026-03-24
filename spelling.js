@@ -147,18 +147,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const resultCell = document.createElement("td");
             resultCell.textContent = result.correct ? "✅ Correct" : "❌ Incorrect";
             resultCell.style.padding = "8px";
+            resultCell.style.textAlign = "left";
 
             const commonCell = document.createElement("td");
             commonCell.textContent = result.card.answer.commonName;
             commonCell.style.padding = "8px";
+            commonCell.style.textAlign = "left";
 
             const latinCell = document.createElement("td");
             latinCell.textContent = result.card.answer.latinName;
             latinCell.style.padding = "8px";
+            latinCell.style.textAlign = "left";
 
             const categoryCell = document.createElement("td");
             categoryCell.textContent = result.card.category;
             categoryCell.style.padding = "8px";
+            categoryCell.style.textAlign = "left";
 
             row.appendChild(resultCell);
             row.appendChild(commonCell);

@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             td.textContent = value;
             td.style.padding = "5px";
             td.style.borderBottom = "1px solid #c1e0cd";
+            td.style.textAlign = "left";
 
             row.appendChild(th);
             row.appendChild(td);
@@ -96,6 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showResultsScreen() {
+        localStorage.removeItem("activeCards");
+        localStorage.removeItem("flashcardsCurrentIndex");
+        localStorage.removeItem("flashcardsScore");
+        localStorage.removeItem("missedCounts");
+
         flashContainer.innerHTML = "";
 
         const title = document.createElement("h2");
@@ -125,18 +131,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const resultCell = document.createElement("td");
             resultCell.textContent = result.correct ? "✅ Correct" : "❌ Incorrect";
             resultCell.style.padding = "8px";
+            resultCell.style.textAlign = "left";
 
             const commonCell = document.createElement("td");
             commonCell.textContent = result.card.answer.commonName;
             commonCell.style.padding = "8px";
+            commonCell.style.textAlign = "left";
 
             const latinCell = document.createElement("td");
             latinCell.textContent = result.card.answer.latinName;
             latinCell.style.padding = "8px";
+            latinCell.style.textAlign = "left";
 
             const categoryCell = document.createElement("td");
             categoryCell.textContent = result.card.category;
             categoryCell.style.padding = "8px";
+            categoryCell.style.textAlign = "left";
 
             row.appendChild(resultCell);
             row.appendChild(commonCell);
@@ -158,10 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
             sessionResults = [];
             flashContainer.innerHTML = "";
             activeCards = cards;
-            localStorage.setItem("flashcardsCurrentIndex", currentIndex);
-            localStorage.setItem("flashcardsScore", score);
-            localStorage.setItem("missedCounts", JSON.stringify(missedCounts));
-            localStorage.setItem("activeCards", JSON.stringify(cards));
 
             location.reload(); 
         });
@@ -183,9 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 .map(r => r.card);
                 sessionResults = [];
                 flashContainer.innerHTML = "";
-                localStorage.setItem("flashcardsCurrentIndex", currentIndex);
-                localStorage.setItem("flashcardsScore", score);
-                localStorage.setItem("missedCounts", JSON.stringify(missedCounts));
                 localStorage.setItem("activeCards", JSON.stringify(activeCards));
     
                 location.reload(); 
