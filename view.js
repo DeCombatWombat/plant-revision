@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextBtn = document.getElementById("nextCardBtn");
     const prevBtn = document.getElementById("prevCardBtn");
     const counterEl = document.getElementById("viewCounter");
-
+    let imageIndexes = [];
+    let imageIndex = 0;
     function updateCounter() {
         if (viewMode === "single") {
             counterEl.textContent = `Card ${currentIndex + 1} of ${cards.length}`;
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             counterEl.textContent = `Showing all ${cards.length} cards`;
         }
     }
-    function createCardElement(card) {
+    function createCardElement(card, index) {
         const cardDiv = document.createElement("div");
         cardDiv.classList.add("card");
 
@@ -24,10 +25,22 @@ document.addEventListener("DOMContentLoaded", () => {
         qDiv.classList.add("question-card");
 
         const img = document.createElement("img");
-        img.src = "images/" + card.image;
-        img.id = "cardImage";
+        img.src = "images/" + card.images[imageIndex];
+        img.alt = card.answer.commonName;
         img.classList.add("card-image");
 
+        // Click to cycle images
+        img.addEventListener("click", () => {
+            if (viewMode == "scroll") {
+                imageIndex = (imageIndexes[index] + 1) % card.images.length;
+                imageIndexes[index] = imageIndex;
+                img.src = "images/" + card.images[imageIndexes[index]];
+            }
+            else {
+                imageIndex = (imageIndex + 1) % card.images.length;
+                img.src = "images/" + card.images[imageIndex];
+            }
+        });
         cardDiv.appendChild(qDiv);
         cardDiv.appendChild(img);
 
@@ -75,8 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = "";
 
         if (viewMode === "scroll") {
-            cards.forEach(card => {
-                const el = createCardElement(card);
+            cards.forEach((card, index) => {
+                imageIndexes[index] = 0
+                const el = createCardElement(card, index);
                 el.style.display = "block";
                 el.style.marginBottom = "20px";
                 container.appendChild(el);
@@ -86,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             if (cards.length === 0) return;
             const card = cards[currentIndex];
-            container.appendChild(createCardElement(card));
+            container.appendChild(createCardElement(card, 0));
             nextBtn.style.display = "inline-block";
             prevBtn.style.display = "inline-block";
         }
@@ -98,12 +112,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     viewSelect.addEventListener("change", () => {
         viewMode = viewSelect.value;
+        imageIndex = 0;
+        imageIndexes = [];
         renderCards();
     });
 
     nextBtn.addEventListener("click", () => {
         if (viewMode === "single" && currentIndex < cards.length - 1) {
             currentIndex++;
+            imageIndex = 0;
             renderCards();
         }
     });
@@ -111,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     prevBtn.addEventListener("click", () => {
         if (viewMode === "single" && currentIndex > 0) {
             currentIndex--;
+            imageIndex = 0;
             renderCards();
         }
     });

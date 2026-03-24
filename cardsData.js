@@ -1,7 +1,7 @@
 const cards = [
     {
         id: 1,
-        image: "rose.jpg",
+        images: ["rose1.jpg"],
         spelling: "Rosa",
         category: "Red Plant",
         answer: {
@@ -12,7 +12,7 @@ const cards = [
     },
     {
         id: 2,
-        image: "lavender.jpg",
+        images: ["lavender1.jpg"],
         spelling: "Lavandula angustifolia",
         category: "Blue Plant",
         answer: {
@@ -23,7 +23,7 @@ const cards = [
     },
     {
         id: 3,
-        image: "sunflower.jpeg",
+        images: ["sunflower1.jpeg", "sunflower2.jpg"],
         spelling: "Helianthus annuus",
         category: "Yellow Plant",
         answer: {
