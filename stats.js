@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Header row
         const headerRow = document.createElement("tr");
-        ["Common Name", "Latin Name", "Missed Count"].forEach(header => {
+        ["Common Name", "Latin Name", "Mistakes"].forEach(header => {
             const th = document.createElement("th");
             th.textContent = header;
             th.style.padding = "8px";
