@@ -280,3 +280,33 @@ input[type="text"] {
     line-height: 1.4;
 }
 
+/* All select boxes (combo boxes) */
+select {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid #a8d5ba;
+    background-color: #f0f9f0;
+    font-size: 1rem;
+    color: #2f5d3e;
+    appearance: none; /* remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 180px;
+}
+
+/* Hover / focus effects */
+select:hover, select:focus {
+    border-color: #91c99c;
+    box-shadow: 0 0 5px rgba(145, 201, 156, 0.5);
+    outline: none;
+}
+
+/* Add a custom arrow for dropdown */
+select {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%232f5d3e" height="12" viewBox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
