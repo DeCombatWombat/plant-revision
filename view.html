@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>View Mode</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="nav-container">
+        <h1>View Mode</h1>
+        <nav class="top-nav">
+            <a href="index.html" class="nav-link">Home Page</a>
+            <a href="flashcards.html" class="nav-link">Flashcards</a>
+            <a href="spelling.html" class="nav-link">Spelling</a>
+            <a href="view.html" class="nav-link">View Mode</a>
+            <a href="stats.html" class="nav-link">Statistics</a>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="view-controls">
+        <label for="viewModeSelect">View Mode:</label>
+        <select id="viewModeSelect">
+            <option value="single">One at a time</option>
+            <option value="scroll">Scroll all</option>
+        </select>
+        <button id="prevCardBtn" class="button">⬅ Previous</button>
+        <button id="nextCardBtn" class="button">Next ➡</button>
+        <div id="viewCounter" class="view-counter"></div>
+    </div>
+    <div id="cardsContainer" class="cards-container"></div>
+</main>
+<script src="cardsData.js"></script>
+<script src="view.js"></script>
+</body>
+</html>

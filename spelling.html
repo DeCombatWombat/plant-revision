@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spelling Mode</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="nav-container">
+        <h1>Spelling</h1>
+        <nav class="top-nav">
+            <a href="index.html" class="nav-link">Home Page</a>
+            <a href="flashcards.html" class="nav-link">Flashcards</a>
+            <a href="spelling.html" class="nav-link">Spelling</a>
+            <a href="view.html" class="nav-link">View Mode</a>
+            <a href="stats.html" class="nav-link">Statistics</a>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="card-container">
+        <div id="question" class="question-card"></div>
+        <img id="cardImage" class="card-image" src="" alt="Flashcard Image">
+        <input id="spellingInput" type="text" placeholder="Type the correct spelling">
+        <button id="submitSpelling" class="button">Submit</button>
+        <div id="feedback" class="feedback"></div>
+        <button id="nextSpelling" class="button" style="display:none;">Next ➡</button>
+        <div class="progress-bar-background">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div id="score" class="score"></div>
+    </div>
+</main>
+<script src="cardsData.js"></script>
+<script src="spelling.js"></script>
+</body>
+</html>
