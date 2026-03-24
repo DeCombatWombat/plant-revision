@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadCard() {
         if (currentIndex >= cards.length) return;
         const card = cards[currentIndex];
-        questionEl.textContent = card.question;
+        questionEl.textContent = "Spell the Latin name of this plant";
         cardImage.src = "images/" + card.image;
 
         spellingInput.value = "";

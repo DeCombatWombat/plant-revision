@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadCard() {
         if (currentIndex >= cards.length) return;
         const card = cards[currentIndex];
-        questionEl.textContent = card.question;
+        questionEl.textContent = "Identify the common name and Latin name of this plant";
         cardImage.src = "images/" + card.image;
         correctBtn.style.display = "none";
         incorrectBtn.style.display = "none";

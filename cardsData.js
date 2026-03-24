@@ -1,35 +1,32 @@
 const cards = [
     {
         id: 1,
-        image: "img1.png",
-        question: "Identify this plant",
-        spelling: "rose",
+        image: "rose.jpg",
+        spelling: "Rosa",
         answer: {
             commonName: "Rose",
-            latinName: "Rosa spp.",
-            comments: "Popular ornamental plant, often used in gardens and perfumes."
+            latinName: "Rosa",
+            comments: "Really fun fact about roses are that they are sometimes red."
         }
     },
     {
         id: 2,
-        image: "img1.png",
-        question: "Identify this plant",
-        spelling: "lavender",
+        image: "lavender.jpg",
+        spelling: "Lavandula angustifolia",
         answer: {
             commonName: "Lavender",
             latinName: "Lavandula angustifolia",
-            comments: "Used for essential oils and aromatherapy; attracts pollinators."
+            comments: "Lavender smells pretty nice."
         }
     },
     {
         id: 3,
-        image: "img1.png",
-        question: "Identify this plant",
-        spelling: "sunflower",
+        image: "sunflower.jpeg",
+        spelling: "Helianthus annuus",
         answer: {
             commonName: "Sunflower",
             latinName: "Helianthus annuus",
-            comments: "Produces edible seeds and oil; iconic large yellow flower."
+            comments: "Yellow is the best colour for a flower."
         }
     }
     // Add more cards here
