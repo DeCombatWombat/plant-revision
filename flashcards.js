@@ -2,8 +2,34 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = parseInt(localStorage.getItem("flashcardsCurrentIndex")) || 0;
     let score = parseInt(localStorage.getItem("flashcardsScore")) || 0;
     let missedCounts = JSON.parse(localStorage.getItem("missedCounts")) || {};
-    let activeCards = JSON.parse(localStorage.getItem("activeCards")) || cards;;
+    let selectedCategory = localStorage.getItem("selectedCategory") || "all";
 
+    function pickRandomItems(arr, count = 5) {
+    const copy = [...arr];
+
+    for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+
+    return copy.slice(0, count);
+    }
+
+    function filterCards() {
+        if (selectedCategory == "all") {
+            return cards;
+        }
+
+        if (selectedCategory == "random") {
+            return pickRandomItems(cards, 5)
+        }
+        else {
+            let filteredCards = filteredCards.filter((card) => card.category == selectedCategory)
+            return filteredCards
+        }
+    }
+
+    let activeCards = JSON.parse(localStorage.getItem("activeCards")) || filterCards(cards);
     activeCards.forEach(c => { if (!(c.id in missedCounts)) missedCounts[c.id] = 0; });
 
     const questionEl = document.getElementById("question");
@@ -100,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.removeItem("activeCards");
         localStorage.removeItem("flashcardsCurrentIndex");
         localStorage.removeItem("flashcardsScore");
-        localStorage.removeItem("missedCounts");
 
         flashContainer.innerHTML = "";
 
